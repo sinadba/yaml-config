@@ -1,4 +1,4 @@
-package com.nl.util.fs.reader;
+package org.gongice.util.fs.reader;
 
 import java.io.*;
 import java.util.Arrays;
@@ -6,7 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.nl.util.fs.filter.LocalFileFilter;
+import org.gongice.util.fs.filter.LocalFileFilter;
+
 
 public class LocalReader extends FSReader {
 

@@ -12,8 +12,6 @@ import java.io.InputStream;
 
 import org.apache.commons.lang.NotImplementedException;
 
-import backtype.storm.utils.TimeCacheMap;
-
 /**
  * 创建一个抽象类与底层文件系统进行交互 例如: UNIX 文件系统,HDFS
  * 
