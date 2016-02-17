@@ -17,9 +17,7 @@ public class PropertiesUtil {
 	public static void readConfFile(String confFilePath) {
 		try {
 			pro = new Properties();
-			// ��ȡ�����ļ�ftpconfig.properties�е����
 			inputFileStream = new FileInputStream(confFilePath);
-			// װ�������ļ�
 			pro.load(inputFileStream);
 		} catch (FileNotFoundException e) {
 			log.error("FileNotFoundException");

@@ -1,4 +1,3 @@
-
 package org.gongice.util.fs.filter;
 
 import java.io.File;
@@ -20,9 +19,7 @@ public class OlderFileFilter implements FileFilter {
 
     @Override
     public boolean accept(File pathname) {
-
         long current_time = System.currentTimeMillis();
-
         return (pathname.isFile() && (pathname.lastModified() + seconds * 1000 <= current_time))
                 || pathname.isDirectory();
     }

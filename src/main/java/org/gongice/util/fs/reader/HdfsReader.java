@@ -4,17 +4,16 @@
  * @CreateTime: 2015年7月28日 下午17:44:20
  * @Description: 无
  */
-package com.nl.util.fs.reader;
+package org.gongice.util.fs.reader;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.gongice.util.fs.filter.HdfsPathFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.nl.util.fs.filter.HdfsPathFilter;
 
 import java.io.IOException;
 import java.io.InputStream;

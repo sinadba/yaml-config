@@ -7,6 +7,8 @@
 package org.gongice.util.fs;
 
 import org.gongice.util.fs.reader.FSReader;
+import org.gongice.util.fs.reader.HdfsReader;
+import org.gongice.util.fs.reader.LocalReader;
 
 
 
@@ -25,11 +27,11 @@ public class FSFactory {
 	public static FSReader get(FSReader.FS type) {
 		switch (type) {
 		case HDFS:
-			return new FSReader();
-		case LOCAL:
-			return new FSReader();
-		default:
 			return new HdfsReader();
+		case LOCAL:
+			return new LocalReader();
+		default:
+			return new LocalReader();
 		}
 	}
 

@@ -14,11 +14,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.io.IOUtils;
+import org.gongice.util.fs.FSFactory;
 import org.gongice.util.fs.reader.FSReader;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.scanner.ScannerException;
-
-
 
 import backtype.storm.Config;
 
@@ -114,5 +113,94 @@ public class ConfigLoader {
 			IOUtils.closeQuietly(inputStream);
 		}
 		return configObject;
+	}
+	public static void print(Config conf) {
+		if (conf != null) {
+			System.out
+					.println("============================================== TOPOLOGY CONFIG INFO=====================================================");
+			System.out
+					.println("----------------------------------------------------------------------------------------------------------------------|");
+
+			for (Entry<String, Object> targetConfigEntry : conf.entrySet()) {
+				System.out.println(appendBlank(targetConfigEntry.getKey(), 40)
+						+ "\t|\t"
+						+ (cut(targetConfigEntry.getValue().toString(), 50)));
+				System.out
+						.println("----------------------------------------------------------------------------------------------------------------------|");
+			}
+			System.out
+					.println("========================================================================================================================");
+		}
+	}
+	static String appendBlank(String str, int length) {
+		StringBuffer sb = new StringBuffer();
+		if (str == null || "".equals(str)) {
+			for (int i = 0; i < length; i++) {
+				sb.append(" ");
+			}
+		} else {
+			if (length > str.length()) {
+				sb.append(str);
+				for (int i = 0; i < length - str.length(); i++) {
+					sb.append(" ");
+				}
+			} else {
+				sb.append(str);
+			}
+
+		}
+
+		return sb.toString();
+
+	}
+
+	static String cut(String str, int length) {
+		StringBuffer sb = new StringBuffer();
+
+		if (str == null || "".equals(str)) {
+			sb.setLength(0);
+			sb.append("");
+
+		} else {
+			if (length < str.length()) {
+				sb.setLength(0);
+				// ,
+				if (str.contains(",")) {
+					return sb.append(
+							"..."
+									+ str.substring(str.lastIndexOf(","),
+											str.length())).toString();
+				}
+
+				if (str.contains("/")) {
+					return sb.append(
+							"..."
+									+ str.substring(str.lastIndexOf("/"),
+											str.length())).toString();
+				}
+				if (str.contains(File.separator)) {
+					return sb.append(
+							"..."
+									+ str.substring(
+											str.lastIndexOf(File.separator),
+											str.length())).toString();
+				}
+
+				if (str.contains(".")) {
+					return sb.append(
+							"..."
+									+ str.substring(str.lastIndexOf("."),
+											str.length())).toString();
+				}
+
+			} else {
+				sb.setLength(0);
+				sb.append(str);
+			}
+
+		}
+
+		return sb.toString();
+
 	}
 }
